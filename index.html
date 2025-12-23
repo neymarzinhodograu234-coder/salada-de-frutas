@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Salada de Frutas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff7f2;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #e91e63;
+    }
+    .box {
+      max-width: 420px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #25d366;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🍓 Monte sua Salada de Frutas</h1>
+
+<div class="box">
+  <form id="pedidoForm">
+    <strong>Escolha as frutas:</strong><br>
+    <input type="checkbox" value="Morango"> Morango<br>
+    <input type="checkbox" value="Banana"> Banana<br>
+    <input type="checkbox" value="Maçã"> Maçã<br>
+    <input type="checkbox" value="Manga"> Manga<br><br>
+
+    <strong>Coberturas:</strong><br>
+    <input type="checkbox" value="Leite Condensado"> Leite Condensado<br>
+    <input type="checkbox" value="Chocolate"> Chocolate<br>
+    <input type="checkbox" value="Granola"> Granola<br><br>
+
+    <button type="submit">Pedir no WhatsApp</button>
+  </form>
+</div>
+
+<script>
+document.getElementById('pedidoForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  let itens = [];
+  document.querySelectorAll('input:checked').forEach(i => itens.push(i.value));
+
+  if (itens.length === 0) {
+    alert('Escolha pelo menos um item.');
+    return;
+  }
+
+  let mensagem = 'Olá! Quero uma salada de frutas com: ' + itens.join(', ');
+  let numero = '5584994173750'; // seu WhatsApp
+
+  window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(mensagem));
+});
+</script>
+
+</body>
+</html>
